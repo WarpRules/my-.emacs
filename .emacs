@@ -14,8 +14,10 @@
 (setq next-line-add-newlines nil) ; Don't automatically add a newline at the end of doc
 (global-set-key '[f2] 'save-buffer)
 (global-set-key "\C-h" 'delete-backward-char)
-(set-frame-font "9x15")
 (setq default-frame-alist '((width . 120) (height . 54)))
+
+(defun font-exists-p (font) "check if font exists" (if (null (x-list-fonts font)) nil t))
+(if (font-exists-p "9x15") (set-frame-font "9x15"))
 
 ;;; Redefine ctrl-backspace to not to add the removed text to the kill ring
 (defun my-delete-word (arg)
